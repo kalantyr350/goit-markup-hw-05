@@ -1,3 +1,5 @@
+/*  */
+
 :root {
   /* fonts */
   --mein-txt: 'Roboto';
@@ -23,6 +25,8 @@
   --border-hero-cl: #ececec;
   --border-project-cl: #eeeeee;
   --icon-cl: #afb1b8;
+
+  --timing-f: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -134,13 +138,31 @@ address {
 
 .nav-link {
   display: inline-block;
+  position: relative;
   padding-top: 32px;
   padding-bottom: 32px;
 
-  color: var(--text-color);
   font-weight: 500;
   line-height: 1.14;
   letter-spacing: 0.02em;
+
+  transition: color 250ms var(--timing-f);
+
+  color: var(--text-color);
+}
+
+.nav-link.current::after {
+  content: '';
+
+  display: block;
+  width: 100%;
+  height: 4px;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  background-color: var(--accent-color);
 }
 
 .nav-link:hover,
@@ -164,6 +186,8 @@ address {
   font-weight: 500;
   line-height: 1.14;
   letter-spacing: 0.02em;
+
+  transition: color 250ms var(--timing-f);
 }
 
 .header-contact-item {
@@ -234,6 +258,8 @@ address {
   line-height: 1.88;
   letter-spacing: 0.06em;
   border-radius: 4px;
+
+  transition: background-color 250ms var(--timing-f);
 
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   color: var(--white-txt-color);
@@ -319,11 +345,34 @@ address {
 }
 
 .work-item {
+  position: relative;
   margin-right: 30px;
 }
 
 .work-item:nth-child(3n) {
   margin-right: 0;
+}
+
+.work-label {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 370px;
+  height: 70px;
+
+  bottom: 0;
+  left: 0;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+
+  background: rgba(47, 48, 58, 0.8);
+  color: var(--white-txt-color);
 }
 
 /* team */
@@ -402,6 +451,9 @@ address {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
+
+  transition: background-color 250ms var(--timing-f), color 250ms var(--timing-f);
+
   color: var(--icon-cl);
 }
 
@@ -424,6 +476,7 @@ address {
   line-height: 42px;
   text-align: center;
   letter-spacing: 0.03em;
+
   color: var(--text-color);
 }
 
@@ -442,9 +495,13 @@ address {
   align-items: center;
   width: 170px;
   height: 92px;
+
+  border-radius: 4px;
+
   color: var(--icon-cl);
   border: 1px solid var(--icon-cl);
-  border-radius: 4px;
+
+  transition: color 250ms var(--timing-f);
 }
 
 .client-link:hover,
@@ -489,12 +546,14 @@ address {
   color: var(--white-txt-color);
   line-height: 1.71;
   letter-spacing: 0.03em;
+  transition: color 250ms var(--timing-f);
 }
 
 .contact .address-contact {
   color: var(--footer-secondori-color);
   line-height: 1.71;
   letter-spacing: 0.03em;
+  transition: color 250ms var(--timing-f);
 }
 
 .address-studio:hover,
@@ -536,6 +595,8 @@ address {
   align-items: center;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.1);
+
+  transition: background-color 250ms var(--timing-f);
 }
 
 .footer-social-icon {
@@ -562,17 +623,21 @@ address {
   padding: 6px 22px;
   border: 0;
 
-  color: var(--text-color);
-  background: var(--bg-team);
-
   font-family: inherit;
-  cursor: pointer;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.62;
   letter-spacing: 0.03em;
   text-align: center;
+
+  cursor: pointer;
+  color: var(--text-color);
+  background: var(--bg-team);
   border-radius: 4px;
+
+  transition-property: background-color, color, box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: var(--timing-f);
 }
 .filter .button:focus,
 .filter .button:hover {
