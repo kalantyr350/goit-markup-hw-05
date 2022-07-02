@@ -18,6 +18,7 @@
   --bg-team: #f5f4fa;
   --white-bg-color: #ffffff;
   --bg-icon-sevices: #f5f4fa;
+  --overley-bg: rgba(33, 150, 243, 0.9);
 
   /* others */
   --accent-color: #2196f3;
@@ -159,9 +160,10 @@ address {
   height: 4px;
 
   position: absolute;
-  bottom: 0;
+  bottom: -1px;
   left: 0;
 
+  border-radius: 2px;
   background-color: var(--accent-color);
 }
 
@@ -365,7 +367,6 @@ address {
   left: 0;
 
   font-weight: 700;
-  font-size: 14px;
   line-height: 1.14;
   text-align: center;
   letter-spacing: 0.03em;
@@ -514,6 +515,58 @@ address {
   fill: currentColor;
 }
 
+.backdrop {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 20;
+}
+
+.modal {
+  position: absolute;
+  width: 528px;
+  height: 581px;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background-color: var(--white-bg-color);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  z-index: 30;
+}
+
+.backdrop.is-hidden,
+.modal.is-hidden {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-btn {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+  margin-right: 8px;
+  margin-left: auto;
+
+  background: var(--white-bg-color);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+
+  cursor: pointer;
+}
+
 /* footer */
 
 .footer {
@@ -639,6 +692,7 @@ address {
   transition-duration: 250ms;
   transition-timing-function: var(--timing-f);
 }
+
 .filter .button:focus,
 .filter .button:hover {
   background-color: var(--accent-color);
@@ -668,14 +722,48 @@ address {
 }
 
 .project-link {
+  display: block;
   text-decoration: none;
+  transition: box-shadow 250ms var(--timing-f);
 }
 
-.project-item > .project-link:hover,
-.project-item > .project-link:focus {
-  display: block;
+.project-link:hover,
+.project-link:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+
+.overlay {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.overlay-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 24px;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(100%);
+
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: 0.03em;
+
+  background-color: var(--overley-bg);
+  color: var(--white-txt-color);
+
+  transition: transform 250ms var(--timing-f);
+}
+.project-link:hover .overlay-text,
+.project-link:focus .overlay-text {
+  transform: translateY(0);
 }
 
 .txt-conteiner {
