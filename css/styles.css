@@ -515,7 +515,7 @@ address {
   fill: currentColor;
 }
 
-.backdrop {
+.backdrop[data-modal] {
   opacity: 0;
   visibility: hidden;
   position: fixed;
