@@ -515,9 +515,9 @@ address {
   fill: currentColor;
 }
 
-.backdrop[data-modal] {
-  opacity: 0;
-  visibility: hidden;
+.backdrop {
+  opacity: 1;
+  visibility: visible;
   position: fixed;
   top: 0;
   left: 0;
@@ -545,8 +545,8 @@ address {
 
 .backdrop.is-hidden,
 .modal.is-hidden {
-  opacity: 1;
-  visibility: visible;
+  opacity: 0;
+  visibility: hidden;
 }
 
 .modal-btn {
